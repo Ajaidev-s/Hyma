@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation - Hyma & Abhijith</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .invitation-card {
+            max-width: 600px;
+            width: 100%;
+            background: linear-gradient(145deg, #fefcf8 0%, #f8f5f0 100%);
+            border: 3px solid #8b6f47;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(139, 111, 71, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 111, 71, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .decorative-element {
+            position: absolute;
+            color: #8b6f47;
+            opacity: 0.3;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .top-left {
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+        }
+
+        .top-right {
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+        }
+
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+            font-size: 24px;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .ganesh-symbol {
+            font-size: 48px;
+            color: #8b6f47;
+            margin-bottom: 15px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(139, 111, 71, 0.5); }
+            to { text-shadow: 0 0 20px rgba(139, 111, 71, 0.8); }
+        }
+
+        .hosts {
+            display: none;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .host-left, .host-right {
+            flex: 1;
+        }
+
+        .host-right {
+            text-align: right;
+        }
+
+        .invitation-text {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 18px;
+            color: #5a4a3a;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .names {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: scaleIn 1s ease-out 1.5s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .bride-name, .groom-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            font-weight: 700;
+            color: #8b6f47;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(139, 111, 71, 0.3);
+        }
+
+        .with {
+            font-size: 24px;
+            color: #5a4a3a;
+            margin: 15px 0;
+        }
+
+        .groom-details {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: #5a4a3a;
+            line-height: 1.5;
+            animation: fadeIn 1s ease-out 2s both;
+        }
+
+        .wedding-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            animation: slideUp 1s ease-out 2.5s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-item {
+            flex: 1;
+            text-align: center;
+            padding: 0 10px;
+            border-right: 2px solid #8b6f47;
+        }
+
+        .detail-item:last-child {
+            border-right: none;
+        }
+
+        .detail-icon {
+            font-size: 32px;
+            color: #8b6f47;
+            margin-bottom: 10px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .detail-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #8b6f47;
+            margin-bottom: 5px;
+        }
+
+        .detail-content {
+            font-size: 16px;
+            color: #5a4a3a;
+            line-height: 1.4;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            color: #8b6f47;
+            font-size: 24px;
+            animation: fadeIn 1s ease-out 3s both;
+        }
+
+        .footer {
+            text-align: center;
+            animation: fadeIn 1s ease-out 3.5s both;
+        }
+
+        .compliments {
+            font-size: 16px;
+            color: #5a4a3a;
+            margin-bottom: 20px;
+        }
+
+        .reception {
+            font-size: 16px;
+            color: #8b6f47;
+            margin-bottom: 10px;
+            padding: 15px;
+            background: rgba(139, 111, 71, 0.1);
+            border-radius: 10px;
+            border: 1px dashed #8b6f47;
+        }
+
+        .party-time {
+            font-size: 14px;
+            color: #5a4a3a;
+            margin-top: 10px;
+        }
+
+        .save-date-btn {
+            background: linear-gradient(145deg, #8b6f47, #a0845a);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(139, 111, 71, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .save-date-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 111, 71, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .invitation-card {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .hosts {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .host-right {
+                text-align: left;
+            }
+            
+            .bride-name, .groom-name {
+                font-size: 36px;
+            }
+            
+            .wedding-details {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .detail-item {
+                border-right: none;
+                border-bottom: 2px solid #8b6f47;
+                padding-bottom: 20px;
+            }
+            
+            .detail-item:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-card">
+        <div class="decorative-element top-left">🌸</div>
+        <div class="decorative-element top-right">🌿</div>
+        <div class="decorative-element bottom-left">🌺</div>
+        <div class="decorative-element bottom-right">🍃</div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="ganesh-symbol">🕉</div>
+            </div>
+
+            <div class="invitation-text">
+                I cordially invite you to join me<br>
+                on the most special day of my life<br>
+                as I get married to my beloved
+            </div>
+
+            <div class="names">
+                <div class="bride-name">Hyma</div>
+                <div class="with">with</div>
+                <div class="groom-name">Abhijith</div>
+            </div>
+
+            <div class="groom-details">
+                Your presence would make this day even more special!
+            </div>
+
+            <div class="wedding-details">
+                <div class="detail-item">
+                    <div class="detail-icon">🗓️</div>
+                    <div class="detail-title">Date</div>
+                    <div class="detail-content">
+                        Sunday<br>
+                        17<sup>th</sup> August 2025<br>
+                        <small>(01<sup>st</sup> Chingam 1201)</small>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">📍</div>
+                    <div class="detail-title">At</div>
+                    <div class="detail-content">
+                        Thamarasseril<br>
+                        Convention Centre<br>
+                        Ramapuram
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">⏰</div>
+                    <div class="detail-title">Muhurtham</div>
+                    <div class="detail-content">
+                        Between<br>
+                        10.30 am &<br>
+                        11.30 am
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider">❦</div>
+
+            <div class="footer">
+                <div class="reception">
+                    <strong>Reception:</strong> on Saturday 16<sup>th</sup> August 2025<br>
+                    at my residence
+                </div>
+                
+                <div class="party-time">
+                    Party leaves at: 9.00 am
+                </div>
+
+                <button class="save-date-btn" onclick="saveToCalendar()">
+                    🗓️ Save the Date
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function saveToCalendar() {
+            const startDate = new Date('2025-08-17T10:30:00');
+            const endDate = new Date('2025-08-17T11:30:00');
+            
+            const title = 'Wedding of Hyma & Abhijith';
+            const details = 'Wedding ceremony of Hyma and Abhijith';
+            const location = 'Thamarasseril Convention Centre, Ramapuram';
+            
+            // Create Google Calendar URL
+            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}/${endDate.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+            
+            window.open(googleCalendarUrl, '_blank');
+        }
+
+        // Add some interactive sparkle effects
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.fontSize = Math.random() * 20 + 10 + 'px';
+            sparkle.style.color = '#8b6f47';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.animation = 'sparkle 3s linear forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        // Add sparkle animation
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkle {
+                0% { opacity: 0; transform: scale(0) rotate(0deg); }
+                50% { opacity: 1; transform: scale(1) rotate(180deg); }
+                100% { opacity: 0; transform: scale(0) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 2000);
+    </script>
+</body>
+</html>
